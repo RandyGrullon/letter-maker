@@ -1,0 +1,18 @@
+rules_version = '2';
+
+// Firebase Storage Security Rules
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow anyone to read files (for viewing shared letters)
+    match /{allPaths=**} {
+      allow read: if true;
+    }
+    
+    // Allow uploads to letters folder
+    match /letters/{fileName} {
+      allow write: if true;
+      // En producción, deberías cambiar esto a:
+      // allow write: if request.auth != null;
+    }
+  }
+}
