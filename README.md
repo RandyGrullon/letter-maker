@@ -68,9 +68,15 @@ yarn dev
 4. Enable Storage for images
 5. Update security rules (see `storage.rules`)
 
-### Environment Variables (Optional)
+### Local Development Setup
 
-Create `.env.local` file:
+**Option 1: Using firebase-config.ts (Recommended for local dev)**
+1. Copy `src/lib/firebase-config.example.ts` to `src/lib/firebase-config.ts`
+2. Add your Firebase credentials to `firebase-config.ts`
+
+**Option 2: Using environment variables**
+1. Create `.env.local` file in the root directory
+2. Add the following variables:
 ```env
 NEXT_PUBLIC_FIREBASE_API_KEY=your_api_key
 NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your_auth_domain
@@ -79,6 +85,8 @@ NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your_storage_bucket
 NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your_sender_id
 NEXT_PUBLIC_FIREBASE_APP_ID=your_app_id
 ```
+
+The app will automatically use environment variables if available, otherwise it will fall back to `firebase-config.ts`.
 
 ## 📦 Build
 
@@ -90,10 +98,20 @@ yarn build
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/RandyGrullon/letter-maker)
 
+### Deployment Steps:
+
 1. Push your code to GitHub
-2. Import project in Vercel
-3. Add Firebase configuration in Vercel Environment Variables
+2. Import project in [Vercel](https://vercel.com)
+3. **Add Environment Variables** in Vercel project settings:
+   - `NEXT_PUBLIC_FIREBASE_API_KEY`
+   - `NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN`
+   - `NEXT_PUBLIC_FIREBASE_PROJECT_ID`
+   - `NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET`
+   - `NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID`
+   - `NEXT_PUBLIC_FIREBASE_APP_ID`
 4. Deploy!
+
+**Note**: The app automatically uses environment variables in production, so you don't need to commit `firebase-config.ts`.
 
 ## 🛠️ Tech Stack
 
