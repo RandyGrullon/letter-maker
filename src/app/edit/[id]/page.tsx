@@ -37,15 +37,17 @@ export default function EditLetterPage() {
     const [content, setContent] = useState<LetterContent>({
         frontImage: "",
         leftImage: "",
-        message: "",
+        rightText: "",
         signature: "",
         frontImageZoom: 1,
         leftImageZoom: 1,
     });
 
     const [style, setStyle] = useState<LetterStyle>({
+        themeColor: "#ffffff",
         fontFamily: FONTS[0].value,
-        primaryColor: "#4F46E5",
+        fontSize: 24,
+        signatureFontSize: 24,
     });
 
     const [files, setFiles] = useState<{ [key: string]: File }>({});
@@ -208,9 +210,9 @@ export default function EditLetterPage() {
                                 <div className="space-y-4">
                                     <Label htmlFor="message">Your Message</Label>
                                     <Textarea
-                                        id="message"
-                                        name="message"
-                                        value={content.message}
+                                        id="rightText"
+                                        name="rightText"
+                                        value={content.rightText}
                                         onChange={handleChange}
                                         placeholder="Write your heartfelt message..."
                                         rows={10}
