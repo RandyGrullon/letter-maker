@@ -3337,7 +3337,7 @@ jsonwebtoken@^9.0.0:
     ms "^2.1.1"
     semver "^7.5.4"
 
-jspdf@*:
+jspdf@*, jspdf@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/jspdf/-/jspdf-4.0.0.tgz#3731c0a1a7d8afe28c681891236f8ad4a662d893"
   integrity sha512-w12U97Z6edKd2tXDn3LzTLg7C7QLJlx0BPfM3ecjK2BckUl9/81vZ+r5gK4/3KQdhAcEZhENUxRhtgYBj75MqQ==
@@ -3997,6 +3997,14 @@ react-is@^16.13.1:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-is/-/react-is-16.13.1.tgz"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
+
+react-to-pdf@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-to-pdf/-/react-to-pdf-3.0.0.tgz#566f13870151805222befc6f03f13f8a7815e0fe"
+  integrity sha512-aYYyrKDX2Bp4BFdX77CHGzbOWRyD+iz2O5G9DKPhez6ZKh3SfBDuIiVG+XoYp3HQ3XVsL/nOv1Lny5mrjZ4skw==
+  dependencies:
+    html2canvas "^1.4.1"
+    jspdf "^4.0.0"
 
 react@19.2.3:
   version "19.2.3"

@@ -32,6 +32,18 @@ export const updateLetter = async (id: string, updates: Partial<Omit<Letter, "id
     }
 };
 
+export const updateLetterTitle = async (id: string, title: string): Promise<void> => {
+    try {
+        const docRef = doc(db, COLLECTION_NAME, id);
+        await updateDoc(docRef, {
+            "content.title": title
+        });
+    } catch (error) {
+        console.error("Error updating letter title:", error);
+        throw error;
+    }
+};
+
 export const getLetter = async (id: string): Promise<Letter | null> => {
     try {
         const docRef = doc(db, COLLECTION_NAME, id);
@@ -138,5 +150,33 @@ export const searchUserByEmail = async (email: string): Promise<User | null> => 
     } catch (error) {
         console.error("Error searching user by email:", error);
         return null;
+    }
+};
+
+export const deleteLetter = async (letterId: string, userId: string, isSender: boolean): Promise<void> => {
+    try {
+        const letterRef = doc(db, COLLECTION_NAME, letterId);
+        
+        if (isSender) {
+            // If sender deletes, mark as deleted completely
+            await updateDoc(letterRef, {
+                deleted: true
+            });
+        } else {
+            // If recipient deletes, add to hiddenFor array
+            const letterSnap = await getDoc(letterRef);
+            if (letterSnap.exists()) {
+                const letter = letterSnap.data() as Letter;
+                const hiddenFor = letter.hiddenFor || [];
+                if (!hiddenFor.includes(userId)) {
+                    await updateDoc(letterRef, {
+                        hiddenFor: [...hiddenFor, userId]
+                    });
+                }
+            }
+        }
+    } catch (error) {
+        console.error("Error deleting letter:", error);
+        throw error;
     }
 };

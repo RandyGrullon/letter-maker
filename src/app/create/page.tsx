@@ -15,6 +15,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { compressImage } from "@/lib/image";
 import toast from "react-hot-toast";
 import { User } from "@/types";
+import Link from "next/link";
 
 const STEPS = ["Front Cover", "Inside Left", "Message", "Signature", "Review", "Send To"];
 
@@ -339,6 +340,21 @@ export default function CreatePage() {
                         <div className="text-center mb-8">
                             <h2 className="text-2xl font-serif font-bold text-gray-900">Your Message</h2>
                             <p className="text-gray-500">Write your heartfelt message.</p>
+                        </div>
+
+                        <div className="space-y-3">
+                            <Label htmlFor="letterTitle" className="text-sm font-medium text-gray-700">
+                                Letter Title (optional)
+                            </Label>
+                            <Input
+                                id="letterTitle"
+                                name="title"
+                                value={content.title || ""}
+                                onChange={handleChange}
+                                placeholder="e.g., Happy Birthday, Thank You, Love Letter..."
+                                className="w-full"
+                            />
+                            <p className="text-xs text-gray-500">This will be used for the PDF filename</p>
                         </div>
 
                         <div className="flex gap-4 mb-4">

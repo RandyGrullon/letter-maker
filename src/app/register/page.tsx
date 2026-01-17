@@ -9,6 +9,7 @@ import { Button } from "@/components/UI/Button";
 import { Input } from "@/components/UI/Input";
 import { Label } from "@/components/UI/Label";
 import Link from "next/link";
+import { ArrowLeft } from "lucide-react";
 
 function RegisterForm() {
     const router = useRouter();
@@ -40,9 +41,18 @@ function RegisterForm() {
 
     return (
         <div className="min-h-screen bg-[#FDFBF7] flex items-center justify-center p-4">
-            <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8">
-                <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Create Account</h1>
-                <p className="text-gray-500 mb-8">Join to receive your letters</p>
+            <div className="w-full max-w-md">
+                <div className="mb-4">
+                    <Link href="/">
+                        <Button variant="ghost" className="flex items-center gap-2 text-gray-600 hover:text-gray-900">
+                            <ArrowLeft className="w-4 h-4" />
+                            Volver al inicio
+                        </Button>
+                    </Link>
+                </div>
+                <div className="bg-white rounded-2xl shadow-lg p-8">
+                    <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Create Account</h1>
+                    <p className="text-gray-500 mb-8">Join to receive your letters</p>
 
                 {error && (
                     <div className="bg-red-50 text-red-700 p-3 rounded-lg mb-6 text-sm">
@@ -118,6 +128,7 @@ function RegisterForm() {
                         Sign in
                     </Link>
                 </p>
+                </div>
             </div>
         </div>
     );

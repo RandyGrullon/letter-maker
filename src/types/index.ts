@@ -1,4 +1,5 @@
 export interface LetterContent {
+    title?: string;
     frontImage?: string;
     frontImageZoom?: number;
     leftImage?: string;
@@ -25,6 +26,8 @@ export interface Letter {
     recipientId?: string;
     recipientName?: string;
     recipientEmail?: string;
+    hiddenFor?: string[]; // Array of user IDs who have hidden this letter
+    deleted?: boolean; // If sender deletes completely
 }
 
 export interface User {
