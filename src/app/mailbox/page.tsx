@@ -20,7 +20,7 @@ export default function MailboxPage() {
     const router = useRouter();
     const [letters, setLetters] = useState<Letter[]>([]);
     const [loading, setLoading] = useState(true);
-    const [activeTab, setActiveTab] = useState<TabType>('sent');
+    const [activeTab, setActiveTab] = useState<TabType>('received');
     const [initialTabSet, setInitialTabSet] = useState(false);
     const [editingLetter, setEditingLetter] = useState<Letter | null>(null);
     const [newTitle, setNewTitle] = useState("");
